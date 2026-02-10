@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Activity, Settings2, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 export function HeroSection() {
@@ -20,7 +21,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-6 bg-slate-800 text-amber-400 border-slate-700">
+            <Badge variant="secondary" className="mb-6 bg-slate-800 text-amber-400 border-slate-700 hover:bg-slate-700">
               New Series Release 2025
             </Badge>
           </motion.div>
@@ -85,12 +86,5 @@ export function HeroSection() {
         </motion.div>
       </div>
     </div>
-  );
-}
-function Badge({ children, variant, className }: { children: React.ReactNode, variant: string, className?: string }) {
-  return (
-    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}>
-      {children}
-    </span>
   );
 }

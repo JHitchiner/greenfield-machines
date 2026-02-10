@@ -1,9 +1,9 @@
 import React from 'react';
-import { ShoppingCart, Trash2, X } from 'lucide-react';
+import { ShoppingCart, Trash2 } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuHeader,
+  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
@@ -29,16 +29,18 @@ export function CartDropdown() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-80 p-0 shadow-2xl border-slate-200 dark:border-slate-800">
-        <div className="p-4 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
-          <h3 className="font-display font-bold text-sm uppercase tracking-tight">Shopping Cart</h3>
-          <Badge variant="outline" className="text-[10px] font-mono">{count} Items</Badge>
+        <div className="bg-slate-50 dark:bg-slate-900/50">
+          <DropdownMenuLabel className="p-4 flex items-center justify-between">
+            <span className="font-display font-bold text-sm uppercase tracking-tight">Shopping Cart</span>
+            <Badge variant="outline" className="text-[10px] font-mono">{count} Items</Badge>
+          </DropdownMenuLabel>
         </div>
         <Separator />
         <ScrollArea className="h-[320px]">
           {items.length > 0 ? (
             <div className="p-2 space-y-2">
-              {items.map((item, idx) => (
-                <div key={`${item.id}-${idx}`} className="flex gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-lg transition-colors group">
+              {items.map((item) => (
+                <div key={item.cartId} className="flex gap-3 p-2 hover:bg-slate-50 dark:hover:bg-slate-900 rounded-lg transition-colors group">
                   <div className="h-16 w-16 shrink-0 rounded-md overflow-hidden border border-slate-200 dark:border-slate-800 bg-white">
                     <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
                   </div>
@@ -49,8 +51,8 @@ export function CartDropdown() {
                       ${item.price.toLocaleString()}
                     </p>
                   </div>
-                  <button 
-                    onClick={() => removeItem(item.id)}
+                  <button
+                    onClick={() => removeItem(item.cartId)}
                     className="opacity-0 group-hover:opacity-100 p-1 text-muted-foreground hover:text-destructive transition-all"
                   >
                     <Trash2 className="h-4 w-4" />

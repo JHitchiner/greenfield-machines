@@ -1,11 +1,14 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Machine } from '@/lib/machine-data';
-export type CartItem = Machine;
+import { v4 as uuidv4 } from 'uuid';
+export interface CartItem extends Machine {
+  cartId: string;
+}
 interface CartState {
   items: CartItem[];
   addItem: (machine: Machine) => void;
-  removeItem: (id: string) => void;
+  removeItem: (cartId: string) => void;
   clearCart: () => void;
 }
 export const useCart = create<CartState>()(
@@ -14,11 +17,11 @@ export const useCart = create<CartState>()(
       items: [],
       addItem: (machine) =>
         set((state) => ({
-          items: [...state.items, machine],
+          items: [...state.items, { ...machine, cartId: uuidv4() }],
         })),
-      removeItem: (id) =>
+      removeItem: (cartId) =>
         set((state) => ({
-          items: state.items.filter((item) => item.id !== id),
+          items: state.items.filter((item) => item.cartId !== cartId),
         })),
       clearCart: () => set({ items: [] }),
     }),
