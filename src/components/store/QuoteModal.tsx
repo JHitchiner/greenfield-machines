@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, FileText, ArrowRight } from 'lucide-react';
+import { Settings2, FileText, ArrowRight } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,7 @@ export function QuoteModal({ open, onOpenChange }: QuoteModalProps) {
         <div className="bg-slate-950 p-10 flex flex-col items-center text-center relative">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-primary" />
           <div className="mb-6 p-4 bg-emerald-500/10 rounded-full">
-            <ShieldCheck className="h-12 w-12 text-emerald-500" />
+            <Settings2 className="h-12 w-12 text-emerald-500 animate-[spin_20s_linear_infinite]" />
           </div>
           <DialogHeader>
             <DialogTitle className="text-3xl font-display font-bold text-white mb-2">

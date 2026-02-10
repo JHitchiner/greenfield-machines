@@ -25,8 +25,11 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
     setFilters({ ...filters, categories: newCategories });
   };
   const handlePriceChange = (value: number[]) => {
-    setFilters({ ...filters, priceRange: [value[0], value[1]] });
+    // Ensure value is a tuple [number, number]
+    setFilters({ ...filters, priceRange: [value[0] ?? 0, value[1] ?? 250000] });
   };
+  // Provide robust fallbacks to prevent uncontrolled component warnings
+  const currentPriceRange = filters.priceRange || [0, 250000];
   return (
     <div className="space-y-6">
       <div>
@@ -62,17 +65,17 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
             <AccordionContent>
               <div className="pt-4 px-1 space-y-6">
                 <Slider
-                  value={[filters.priceRange[0], filters.priceRange[1]]}
+                  value={[currentPriceRange[0], currentPriceRange[1]]}
                   max={250000}
                   step={5000}
                   onValueChange={handlePriceChange}
                 />
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
-                    ${filters.priceRange[0].toLocaleString()}
+                    ${(currentPriceRange[0] ?? 0).toLocaleString()}
                   </span>
                   <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
-                    ${filters.priceRange[1].toLocaleString()}
+                    ${(currentPriceRange[1] ?? 250000).toLocaleString()}
                   </span>
                 </div>
               </div>

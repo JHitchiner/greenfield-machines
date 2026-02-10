@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { HeroSection } from '@/components/store/HeroSection';
 import { ProductCard } from '@/components/store/ProductCard';
@@ -11,6 +11,9 @@ import { Toaster, toast } from 'sonner';
 import { useCartAddItem } from '@/hooks/use-cart';
 export function HomePage() {
   const addItem = useCartAddItem();
+  useEffect(() => {
+    document.title = "Greenfield Machines | Precision Industrial Automation";
+  }, []);
   const [filters, setFilters] = useState<FilterState>({
     categories: [],
     priceRange: [0, 250000],
@@ -18,7 +21,7 @@ export function HomePage() {
   const filteredProducts = useMemo(() => {
     return MACHINES.filter((m) => {
       const matchesCategory = filters.categories.length === 0 || filters.categories.includes(m.category);
-      const matchesPrice = m.price >= filters.priceRange[0] && m.price <= filters.priceRange[1];
+      const matchesPrice = m.price >= (filters.priceRange?.[0] ?? 0) && m.price <= (filters.priceRange?.[1] ?? 250000);
       return matchesCategory && matchesPrice;
     });
   }, [filters]);
@@ -126,7 +129,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="mt-16 pt-8 border-t border-slate-900 text-[10px] uppercase tracking-widest font-bold flex flex-col sm:flex-row justify-between gap-4">
-            <p>�� 2025 Greenfield Industrial Platforms Inc. All Rights Reserved.</p>
+            <p>© 2025 Greenfield Industrial Platforms Inc. All Rights Reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
