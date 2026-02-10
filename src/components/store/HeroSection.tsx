@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Activity, Settings2, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 export function HeroSection() {
@@ -11,8 +10,8 @@ export function HeroSection() {
     <div className="relative overflow-hidden bg-slate-950 py-24 sm:py-32">
       {/* Background Decor */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500 rounded-full blur-[128px]" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600 rounded-full blur-[128px]" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500 rounded-full blur-[128px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600 rounded-full blur-[128px]" />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
@@ -21,7 +20,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Badge variant="secondary" className="mb-6 bg-emerald-900/40 text-emerald-400 border-emerald-800 hover:bg-emerald-900/60">
+            <Badge variant="secondary" className="mb-6 bg-slate-800 text-amber-400 border-slate-700">
               New Series Release 2025
             </Badge>
           </motion.div>
@@ -32,7 +31,7 @@ export function HeroSection() {
             className="text-display text-white mb-6"
           >
             Engineering the <br />
-            <span className="text-emerald-500">Greenfield Precision</span>
+            <span className="text-amber-500">Precision Factory</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +39,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 text-pretty"
           >
-            Deploy next-generation industrial automation with Greenfield Machines. High-performance machinery designed for the most demanding environments on Earth.
+            Deploy next-generation industrial automation with Kinetix. High-performance machinery designed for the most demanding environments on Earth.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -63,21 +62,21 @@ export function HeroSection() {
           className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8"
         >
           <div className="flex items-center gap-4 p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="p-3 bg-slate-800 rounded-xl text-emerald-500"><Activity className="h-6 w-6" /></div>
+            <div className="p-3 bg-slate-800 rounded-xl text-amber-500"><Activity className="h-6 w-6" /></div>
             <div>
               <h3 className="text-white font-semibold">99.9% Uptime</h3>
               <p className="text-slate-500 text-sm">Industrial reliability guaranteed.</p>
             </div>
           </div>
           <div className="flex items-center gap-4 p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="p-3 bg-slate-800 rounded-xl text-emerald-500"><Settings2 className="h-6 w-6" /></div>
+            <div className="p-3 bg-slate-800 rounded-xl text-amber-500"><Settings2 className="h-6 w-6" /></div>
             <div>
               <h3 className="text-white font-semibold">Smart Controls</h3>
               <p className="text-slate-500 text-sm">IoT-enabled remote monitoring.</p>
             </div>
           </div>
           <div className="flex items-center gap-4 p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-            <div className="p-3 bg-slate-800 rounded-xl text-emerald-500"><Shield className="h-6 w-6" /></div>
+            <div className="p-3 bg-slate-800 rounded-xl text-amber-500"><Shield className="h-6 w-6" /></div>
             <div>
               <h3 className="text-white font-semibold">Global Support</h3>
               <p className="text-slate-500 text-sm">24/7 technical field assistance.</p>
@@ -86,5 +85,12 @@ export function HeroSection() {
         </motion.div>
       </div>
     </div>
+  );
+}
+function Badge({ children, variant, className }: { children: React.ReactNode, variant: string, className?: string }) {
+  return (
+    <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${className}`}>
+      {children}
+    </span>
   );
 }

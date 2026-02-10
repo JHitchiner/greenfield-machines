@@ -25,11 +25,8 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
     setFilters({ ...filters, categories: newCategories });
   };
   const handlePriceChange = (value: number[]) => {
-    // Ensure value is a tuple [number, number]
-    setFilters({ ...filters, priceRange: [value[0] ?? 0, value[1] ?? 250000] });
+    setFilters({ ...filters, priceRange: [value[0], value[1]] });
   };
-  // Provide robust fallbacks to prevent uncontrolled component warnings
-  const currentPriceRange = filters.priceRange || [0, 250000];
   return (
     <div className="space-y-6">
       <div>
@@ -37,8 +34,8 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
           Filters
         </h3>
         <Accordion type="multiple" defaultValue={["categories", "price"]} className="w-full">
-          <AccordionItem value="categories" className="border-emerald-100 dark:border-emerald-900/30">
-            <AccordionTrigger className="text-sm font-medium hover:text-emerald-600">Categories</AccordionTrigger>
+          <AccordionItem value="categories">
+            <AccordionTrigger className="text-sm font-medium">Categories</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-3 pt-2">
                 {CATEGORIES.map((category) => (
@@ -47,7 +44,6 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
                       id={category}
                       checked={filters.categories.includes(category)}
                       onCheckedChange={() => toggleCategory(category)}
-                      className="data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
                     />
                     <Label
                       htmlFor={category}
@@ -60,22 +56,22 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="price" className="border-emerald-100 dark:border-emerald-900/30">
-            <AccordionTrigger className="text-sm font-medium hover:text-emerald-600">Price Range</AccordionTrigger>
+          <AccordionItem value="price">
+            <AccordionTrigger className="text-sm font-medium">Price Range</AccordionTrigger>
             <AccordionContent>
               <div className="pt-4 px-1 space-y-6">
                 <Slider
-                  value={[currentPriceRange[0], currentPriceRange[1]]}
+                  defaultValue={[filters.priceRange[0], filters.priceRange[1]]}
                   max={250000}
                   step={5000}
                   onValueChange={handlePriceChange}
                 />
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
-                    ${(currentPriceRange[0] ?? 0).toLocaleString()}
+                  <span className="text-xs font-mono bg-secondary px-2 py-1 rounded">
+                    ${filters.priceRange[0].toLocaleString()}
                   </span>
-                  <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
-                    ${(currentPriceRange[1] ?? 250000).toLocaleString()}
+                  <span className="text-xs font-mono bg-secondary px-2 py-1 rounded">
+                    ${filters.priceRange[1].toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -83,11 +79,11 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
           </AccordionItem>
         </Accordion>
       </div>
-      <div className="bg-emerald-50 dark:bg-emerald-950/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50">
-        <h4 className="text-xs font-bold text-emerald-800 dark:text-emerald-500 uppercase mb-2">Technical Assistance</h4>
-        <p className="text-xs text-emerald-700/80 dark:text-emerald-500/80">Need a custom configuration? Our engineering team is ready to assist.</p>
-        <button className="mt-3 text-xs font-bold text-emerald-900 dark:text-emerald-400 hover:underline">
-          Contact Expert →
+      <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100 dark:border-amber-900/50">
+        <h4 className="text-xs font-bold text-amber-800 dark:text-amber-500 uppercase mb-2">Technical Assistance</h4>
+        <p className="text-xs text-amber-700/80 dark:text-amber-500/80">Need a custom configuration? Our engineering team is ready to assist.</p>
+        <button className="mt-3 text-xs font-bold text-amber-900 dark:text-amber-400 hover:underline">
+          Contact Expert ��
         </button>
       </div>
     </div>
