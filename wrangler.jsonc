@@ -4,7 +4,7 @@
  */
  {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "kinetix-q_w7krzx9fp75ife8snkr",
+	"name": "greenfield-machines",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-04-24",
 	"assets": {
