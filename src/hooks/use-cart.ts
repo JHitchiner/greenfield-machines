@@ -1,14 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Machine } from '@/lib/machine-data';
-import { v4 as uuidv4 } from 'uuid';
-export interface CartItem extends Machine {
-  cartId: string;
-}
+export type CartItem = Machine;
 interface CartState {
   items: CartItem[];
   addItem: (machine: Machine) => void;
-  removeItem: (cartId: string) => void;
+  removeItem: (id: string) => void;
   clearCart: () => void;
 }
 export const useCart = create<CartState>()(
@@ -17,16 +14,16 @@ export const useCart = create<CartState>()(
       items: [],
       addItem: (machine) =>
         set((state) => ({
-          items: [...state.items, { ...machine, cartId: uuidv4() }],
+          items: [...state.items, machine],
         })),
-      removeItem: (cartId) =>
+      removeItem: (id) =>
         set((state) => ({
-          items: state.items.filter((item) => item.cartId !== cartId),
+          items: state.items.filter((item) => item.id !== id),
         })),
       clearCart: () => set({ items: [] }),
     }),
     {
-      name: 'greenfield-cart',
+      name: 'kinetix-cart',
     }
   )
 );
