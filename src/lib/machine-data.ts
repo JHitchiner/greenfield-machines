@@ -14,7 +14,7 @@ export const MACHINES: Machine[] = [
     name: "Kinetix X1-Precision CNC",
     category: "CNC",
     price: 125000,
-    image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?auto=format&fit=crop&q=80&w=800",
     description: "High-speed 5-axis vertical machining center for aerospace components.",
     specs: { "Spindle": "18,000 RPM", "Travel": "1000x600x600mm", "Tooling": "ATC 30" }
   },
