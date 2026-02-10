@@ -1,6 +1,6 @@
 # Cloudflare Workers Full-Stack Starter
 
-[![Deploy to Cloudflare Workers]([cloudflarebutton])]([cloudflarebutton])
+[![Deploy to Cloudflare Workers]([![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JHitchiner/greenfield-machines))]([![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JHitchiner/greenfield-machines))
 
 A production-ready full-stack starter template for Cloudflare Workers featuring a React frontend with Tailwind CSS and shadcn/ui, powered by a Hono backend with Durable Objects for stateful entities (e.g., users, chats). Includes indexed listing, CRUD operations, real-time chat messaging, TanStack Query, dark mode, and mobile-responsive design.
 
@@ -122,7 +122,7 @@ Entities use optimistic CAS mutations with 4x retry. Indexes enable `O(1)` exist
    bun deploy
    ```
    Or use the button:
-   [![Deploy to Cloudflare Workers]([cloudflarebutton])]([cloudflarebutton])
+   [![Deploy to Cloudflare Workers]([![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JHitchiner/greenfield-machines))]([![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/JHitchiner/greenfield-machines))
 
 - Config: `wrangler.jsonc` (SPA routing, DO migrations)
 - Assets served from Worker (single deployment)
