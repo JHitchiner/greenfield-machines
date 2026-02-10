@@ -46,14 +46,14 @@ export function ProductCard({ machine, onAddToCart }: ProductCardProps) {
         <CardFooter className="p-5 pt-0 flex items-center justify-between mt-auto">
           <div className="flex flex-col">
             <span className="text-xs text-muted-foreground font-bold uppercase tracking-tighter">Starting at</span>
-            <span className="text-xl font-bold font-display text-emerald-700 dark:text-emerald-400">
+            <span className="text-xl font-bold font-display text-emerald-600 dark:text-emerald-400">
               ${machine.price.toLocaleString()}
             </span>
           </div>
           <Button
             onClick={() => onAddToCart(machine.id)}
             size="sm"
-            className="rounded-full bg-slate-900 dark:bg-emerald-600 dark:text-slate-950 hover:bg-emerald-600 dark:hover:bg-emerald-500 transition-all shadow-md hover:shadow-emerald-500/20"
+            className="rounded-full btn-gradient shadow-md hover:shadow-emerald-500/20 h-9"
           >
             Add to Quote
           </Button>

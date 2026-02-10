@@ -3,6 +3,7 @@ import { ShoppingCart, Trash2 } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
@@ -19,13 +20,16 @@ export function CartDropdown({ onOpenQuote }: CartDropdownProps) {
   const removeItem = useCartRemoveItem();
   const clearCart = useCartClear();
   const { count, subtotal } = useCartTotals();
+  const handleScrollToCatalog = () => {
+    document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative group">
           <ShoppingCart className="h-5 w-5 group-hover:text-emerald-600 transition-colors" />
           {count > 0 && (
-            <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-[10px] bg-emerald-600 animate-in fade-in zoom-in">
+            <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-[10px] bg-emerald-600 animate-in fade-in zoom-in border-2 border-background">
               {count}
             </Badge>
           )}
@@ -56,6 +60,7 @@ export function CartDropdown({ onOpenQuote }: CartDropdownProps) {
                   </div>
                   <button
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       removeItem(item.cartId);
                     }}
@@ -73,7 +78,9 @@ export function CartDropdown({ onOpenQuote }: CartDropdownProps) {
                 <ShoppingCart className="h-6 w-6 text-emerald-600" />
               </div>
               <p className="text-sm text-muted-foreground">Your quote request is empty.</p>
-              <Button variant="link" size="sm" className="text-emerald-600">Start browsing</Button>
+              <Button variant="link" size="sm" className="text-emerald-600" onClick={handleScrollToCatalog}>
+                Start browsing
+              </Button>
             </div>
           )}
         </ScrollArea>
@@ -84,17 +91,27 @@ export function CartDropdown({ onOpenQuote }: CartDropdownProps) {
             <span className="text-lg font-display font-bold text-emerald-700 dark:text-emerald-500">${subtotal.toLocaleString()}</span>
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="outline" size="sm" onClick={clearCart} disabled={items.length === 0} className="text-xs border-emerald-100 dark:border-emerald-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/20">
-              Clear
-            </Button>
-            <Button 
-              size="sm" 
-              className="btn-gradient text-xs" 
-              disabled={items.length === 0}
-              onClick={() => onOpenQuote?.()}
-            >
-              View Quote
-            </Button>
+            <DropdownMenuItem asChild>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={clearCart} 
+                disabled={items.length === 0} 
+                className="text-xs border-emerald-100 dark:border-emerald-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 w-full"
+              >
+                Clear
+              </Button>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Button
+                size="sm"
+                className="btn-gradient text-xs w-full"
+                disabled={items.length === 0}
+                onClick={() => onOpenQuote?.()}
+              >
+                View Quote
+              </Button>
+            </DropdownMenuItem>
           </div>
         </div>
       </DropdownMenuContent>

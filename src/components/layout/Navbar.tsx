@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
-import { Menu, Settings2 } from 'lucide-react';
+import { Menu, Settings2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CartDropdown } from '@/components/store/CartDropdown';
 import { QuoteModal } from '@/components/store/QuoteModal';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 export function Navbar() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const handleOpenQuote = () => {
     setIsQuoteModalOpen(true);
   };
+  const navLinks = [
+    { name: 'Solutions', href: '#' },
+    { name: 'Catalog', href: '#catalog' },
+    { name: 'Resources', href: '#' },
+    { name: 'Support', href: '#' },
+  ];
   return (
     <>
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
@@ -20,23 +27,56 @@ export function Navbar() {
               <span className="text-xl font-display font-bold tracking-tight">GREENFIELD</span>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Solutions</a>
-              <a href="#catalog" className="text-sm font-medium hover:text-emerald-600 transition-colors">Catalog</a>
-              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Resources</a>
-              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Support</a>
+              {navLinks.map((link) => (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  className="text-sm font-medium hover:text-emerald-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
             </div>
             <div className="flex items-center gap-4">
               <CartDropdown onOpenQuote={handleOpenQuote} />
               <Button
                 variant="outline"
-                className="hidden sm:inline-flex border-slate-300 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/20"
+                className="hidden sm:inline-flex border-emerald-200 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 text-emerald-700 dark:text-emerald-400 font-bold"
                 onClick={handleOpenQuote}
               >
                 Request Quote
               </Button>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-              </Button>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="md:hidden">
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <SheetHeader>
+                    <SheetTitle className="text-left font-display font-bold">Navigation</SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col gap-4 mt-8">
+                    {navLinks.map((link) => (
+                      <a
+                        key={link.name}
+                        href={link.href}
+                        className="text-lg font-medium p-2 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 rounded-md transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                    <Button 
+                      className="mt-4 btn-gradient w-full"
+                      onClick={() => {
+                        handleOpenQuote();
+                      }}
+                    >
+                      Request Quote
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
