@@ -14,19 +14,19 @@ export function Navbar() {
               <div className="bg-primary p-1.5 rounded-lg">
                 <ShieldCheck className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-display font-bold tracking-tight">KINETIX</span>
+              <span className="text-xl font-display font-bold tracking-tight">GREENFIELD</span>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Solutions</a>
-              <a href="#catalog" className="text-sm font-medium hover:text-amber-600 transition-colors">Catalog</a>
-              <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Resources</a>
-              <a href="#" className="text-sm font-medium hover:text-amber-600 transition-colors">Support</a>
+              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Solutions</a>
+              <a href="#catalog" className="text-sm font-medium hover:text-emerald-600 transition-colors">Catalog</a>
+              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Resources</a>
+              <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Support</a>
             </div>
             <div className="flex items-center gap-4">
               <CartDropdown />
-              <Button 
-                variant="outline" 
-                className="hidden sm:inline-flex border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900"
+              <Button
+                variant="outline"
+                className="hidden sm:inline-flex border-slate-300 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/20"
                 onClick={() => setIsQuoteModalOpen(true)}
               >
                 Request Quote

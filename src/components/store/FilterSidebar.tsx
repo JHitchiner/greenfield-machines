@@ -34,8 +34,8 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
           Filters
         </h3>
         <Accordion type="multiple" defaultValue={["categories", "price"]} className="w-full">
-          <AccordionItem value="categories">
-            <AccordionTrigger className="text-sm font-medium">Categories</AccordionTrigger>
+          <AccordionItem value="categories" className="border-emerald-100 dark:border-emerald-900/30">
+            <AccordionTrigger className="text-sm font-medium hover:text-emerald-600">Categories</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-3 pt-2">
                 {CATEGORIES.map((category) => (
@@ -44,6 +44,7 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
                       id={category}
                       checked={filters.categories.includes(category)}
                       onCheckedChange={() => toggleCategory(category)}
+                      className="data-[state=checked]:bg-emerald-600 data-[state=checked]:border-emerald-600"
                     />
                     <Label
                       htmlFor={category}
@@ -56,8 +57,8 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="price">
-            <AccordionTrigger className="text-sm font-medium">Price Range</AccordionTrigger>
+          <AccordionItem value="price" className="border-emerald-100 dark:border-emerald-900/30">
+            <AccordionTrigger className="text-sm font-medium hover:text-emerald-600">Price Range</AccordionTrigger>
             <AccordionContent>
               <div className="pt-4 px-1 space-y-6">
                 <Slider
@@ -67,10 +68,10 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
                   onValueChange={handlePriceChange}
                 />
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono bg-secondary px-2 py-1 rounded">
+                  <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
                     ${filters.priceRange[0].toLocaleString()}
                   </span>
-                  <span className="text-xs font-mono bg-secondary px-2 py-1 rounded">
+                  <span className="text-xs font-mono bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
                     ${filters.priceRange[1].toLocaleString()}
                   </span>
                 </div>
@@ -79,11 +80,11 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
           </AccordionItem>
         </Accordion>
       </div>
-      <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-xl border border-amber-100 dark:border-amber-900/50">
-        <h4 className="text-xs font-bold text-amber-800 dark:text-amber-500 uppercase mb-2">Technical Assistance</h4>
-        <p className="text-xs text-amber-700/80 dark:text-amber-500/80">Need a custom configuration? Our engineering team is ready to assist.</p>
-        <button className="mt-3 text-xs font-bold text-amber-900 dark:text-amber-400 hover:underline">
-          Contact Expert ��
+      <div className="bg-emerald-50 dark:bg-emerald-950/20 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50">
+        <h4 className="text-xs font-bold text-emerald-800 dark:text-emerald-500 uppercase mb-2">Technical Assistance</h4>
+        <p className="text-xs text-emerald-700/80 dark:text-emerald-500/80">Need a custom configuration? Our engineering team is ready to assist.</p>
+        <button className="mt-3 text-xs font-bold text-emerald-900 dark:text-emerald-400 hover:underline">
+          Contact Expert →
         </button>
       </div>
     </div>

@@ -27,7 +27,7 @@ export function StorePage() {
     if (machine) {
       addItem(machine);
       toast.success(`${machine.name} added to quote.`, {
-        description: "You can manage your items in the cart above.",
+        description: "Items successfully added to your Greenfield request.",
       });
     }
   };
@@ -77,16 +77,16 @@ export function StorePage() {
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center py-24 text-center">
-                  <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-full mb-4">
-                    <PackageSearch className="h-12 w-12 text-muted-foreground" />
+                  <div className="bg-emerald-50 dark:bg-emerald-950/20 p-6 rounded-full mb-4">
+                    <PackageSearch className="h-12 w-12 text-emerald-600/50" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">No matches found</h3>
                   <p className="text-muted-foreground max-w-sm">
-                    Try adjusting your filters or search terms to find the equipment you need.
+                    Try adjusting your filters or search terms to find the Greenfield equipment you need.
                   </p>
                   <Button
                     variant="link"
-                    className="mt-4 text-amber-600"
+                    className="mt-4 text-emerald-600"
                     onClick={() => setFilters({ categories: [], priceRange: [0, 250000] })}
                   >
                     Clear all filters
@@ -102,31 +102,31 @@ export function StorePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display font-bold text-white tracking-tight">KINETIX</span>
+                <span className="text-2xl font-display font-bold text-white tracking-tight">GREENFIELD</span>
               </div>
               <p className="max-w-sm text-sm leading-relaxed">
-                Leading the global transition to autonomous manufacturing. Providing mission-critical hardware for the precision factories of tomorrow.
+                Leading the global transition to autonomous manufacturing. Providing mission-critical hardware for the precision factories of tomorrow with Greenfield Machines.
               </p>
             </div>
             <div>
               <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-xs">Contact</h4>
               <ul className="space-y-3 text-sm">
-                <li>Sales: +1 (800) KINETIX</li>
-                <li>Email: ops@kinetix-ind.com</li>
+                <li>Sales: +1 (800) GRN-FIELD</li>
+                <li>Email: ops@greenfield-machines.com</li>
                 <li>HQ: Detroit Innovation Hub, MI</li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-bold mb-6 uppercase tracking-wider text-xs">Follow</h4>
               <ul className="space-y-3 text-sm">
-                <li className="hover:text-amber-500 cursor-pointer transition-colors">LinkedIn</li>
-                <li className="hover:text-amber-500 cursor-pointer transition-colors">X Platforms</li>
-                <li className="hover:text-amber-500 cursor-pointer transition-colors">Industrial News</li>
+                <li className="hover:text-emerald-500 cursor-pointer transition-colors">LinkedIn</li>
+                <li className="hover:text-emerald-500 cursor-pointer transition-colors">X Platforms</li>
+                <li className="hover:text-emerald-500 cursor-pointer transition-colors">Industrial News</li>
               </ul>
             </div>
           </div>
           <div className="mt-16 pt-8 border-t border-slate-900 text-[10px] uppercase tracking-widest font-bold flex flex-col sm:flex-row justify-between gap-4">
-            <p>© 2025 Kinetix Industrial Platforms Inc. All Rights Reserved.</p>
+            <p>© 2025 Greenfield Industrial Platforms Inc. All Rights Reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
