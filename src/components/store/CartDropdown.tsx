@@ -11,7 +11,10 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useCartItems, useCartRemoveItem, useCartClear, useCartTotals } from '@/hooks/use-cart';
-export function CartDropdown() {
+interface CartDropdownProps {
+  onOpenQuote?: () => void;
+}
+export function CartDropdown({ onOpenQuote }: CartDropdownProps) {
   const items = useCartItems();
   const removeItem = useCartRemoveItem();
   const clearCart = useCartClear();
@@ -40,7 +43,7 @@ export function CartDropdown() {
           {items.length > 0 ? (
             <div className="p-2 space-y-2">
               {items.map((item) => (
-                <div key={item.cartId} className="flex gap-3 p-2 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 rounded-lg transition-colors group">
+                <div key={item.cartId} className="flex gap-3 p-2 hover:bg-emerald-50 dark:hover:bg-emerald-950/20 rounded-lg transition-colors group relative">
                   <div className="h-16 w-16 shrink-0 rounded-md overflow-hidden border border-slate-200 dark:border-slate-800 bg-white">
                     <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
                   </div>
@@ -52,8 +55,12 @@ export function CartDropdown() {
                     </p>
                   </div>
                   <button
-                    onClick={() => removeItem(item.cartId)}
-                    className="opacity-0 group-hover:opacity-100 p-1 text-muted-foreground hover:text-destructive transition-all"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItem(item.cartId);
+                    }}
+                    className="md:opacity-0 group-hover:opacity-100 p-2 text-muted-foreground hover:text-destructive transition-all"
+                    aria-label="Remove item"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -80,7 +87,12 @@ export function CartDropdown() {
             <Button variant="outline" size="sm" onClick={clearCart} disabled={items.length === 0} className="text-xs border-emerald-100 dark:border-emerald-900 hover:bg-emerald-50 dark:hover:bg-emerald-950/20">
               Clear
             </Button>
-            <Button size="sm" className="btn-gradient text-xs" disabled={items.length === 0}>
+            <Button 
+              size="sm" 
+              className="btn-gradient text-xs" 
+              disabled={items.length === 0}
+              onClick={() => onOpenQuote?.()}
+            >
               View Quote
             </Button>
           </div>

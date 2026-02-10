@@ -5,6 +5,9 @@ import { CartDropdown } from '@/components/store/CartDropdown';
 import { QuoteModal } from '@/components/store/QuoteModal';
 export function Navbar() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const handleOpenQuote = () => {
+    setIsQuoteModalOpen(true);
+  };
   return (
     <>
       <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
@@ -23,11 +26,11 @@ export function Navbar() {
               <a href="#" className="text-sm font-medium hover:text-emerald-600 transition-colors">Support</a>
             </div>
             <div className="flex items-center gap-4">
-              <CartDropdown />
+              <CartDropdown onOpenQuote={handleOpenQuote} />
               <Button
                 variant="outline"
                 className="hidden sm:inline-flex border-slate-300 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/20"
-                onClick={() => setIsQuoteModalOpen(true)}
+                onClick={handleOpenQuote}
               >
                 Request Quote
               </Button>

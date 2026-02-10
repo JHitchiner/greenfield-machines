@@ -26,7 +26,7 @@ export const useCart = create<CartState>()(
       clearCart: () => set({ items: [] }),
     }),
     {
-      name: 'kinetix-cart',
+      name: 'greenfield-cart',
     }
   )
 );

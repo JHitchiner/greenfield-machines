@@ -62,7 +62,7 @@ export function FilterSidebar({ filters, setFilters }: FilterSidebarProps) {
             <AccordionContent>
               <div className="pt-4 px-1 space-y-6">
                 <Slider
-                  defaultValue={[filters.priceRange[0], filters.priceRange[1]]}
+                  value={[filters.priceRange[0], filters.priceRange[1]]}
                   max={250000}
                   step={5000}
                   onValueChange={handlePriceChange}
